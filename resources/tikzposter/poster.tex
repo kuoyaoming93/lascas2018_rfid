@@ -1,0 +1,152 @@
+%%
+%% This is file `tikzposter-template.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% tikzposter.dtx  (with options: `tikzposter-template.tex')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2014 by Pascal Richter, Elena Botoeva, Richard Barnard, and Dirk Surmann
+%% 
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either
+%% version 2.0 of this license or (at your option) any later
+%% version. The latest version of this license is in:
+%% 
+%% http://www.latex-project.org/lppl.txt
+%% 
+%% and version 2.0 or later is part of all distributions of
+%% LaTeX version 2013/12/01 or later.
+%% 
+
+\documentclass{tikzposter}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\tikzposterlatexaffectionproofoff
+
+\usetheme{Rays}
+\useblockstyle{Basic}
+\usecolorstyle[colorPalette=BlueGrayOrange]{Spain}
+\usetitlestyle{Empty}
+
+% Title, Author, Institute
+\title{Título del póster}
+\author{Author(s)}
+\institute{
+  Instituto Nacional de Tecnología Industrial\\
+  Centro de Micro y Nanoelectrónica
+}
+\titlegraphic{
+  \centering
+  \includegraphics{../../resources/logosINTI/2016/01_isologotipo_institucional_fondo_blanco}
+}
+\newcommand{\eventname}{
+  \fontsize{150}{200}\selectfont{Iberchip} \\
+  \Large{XXII Workshop}
+}
+
+\makeatletter
+\renewcommand\TP@maketitle{%
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \@titlegraphic
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.39\linewidth}
+    \centering
+    \color{black}
+    {\bfseries \fontsize{90}{0} \sc \@title \par}
+    \vspace*{1em}
+    {\huge \@author \par}
+    \vspace*{1em}
+    {\LARGE \@institute}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \eventname
+  \end{minipage}
+}
+\makeatother
+
+\definecolor{darkRed}{RGB}{150, 0, 0}
+\definecolorstyle{redBlock}{}{
+  \colorlet{framecolor}{black}
+  \colorlet{blocktitlebgcolor}{darkRed}
+}
+
+\definecolor{darkGreen}{RGB}{0, 100, 0}
+\definecolorstyle{greenBlock}{}{
+  \colorlet{framecolor}{black}
+  \colorlet{blocktitlebgcolor}{darkGreen}
+}
+
+\definecolor{darkBlue}{RGB}{0, 0, 100}
+\definecolorstyle{blueBlock}{}{
+  \colorlet{framecolor}{black}
+  \colorlet{blocktitlebgcolor}{darkBlue}
+}
+
+
+\definetitlestyle{whiteTitle}{
+  width=500mm, roundedcorners=40, linewidth=10pt, innersep=5pt,
+  titletotopverticalspace=15mm, titletoblockverticalspace=30mm
+}{
+  \begin{scope}[line width=\titlelinewidth, rounded corners=\titleroundedcorners]
+    \draw[color=blocktitlebgcolor, fill=white]
+    (\titleposleft,\titleposbottom) rectangle (\titleposright,\titlepostop);
+  \end{scope}
+}
+
+\usetitlestyle{whiteTitle}
+
+\usebackgroundstyle{Rays}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+ % Title block with title, author, logo, etc.
+\maketitle[width=0.9\paperwidth]
+
+\usecolorstyle{blueBlock}
+
+\block{Basic Block}{Text}
+
+\begin{columns}
+  % FIRST column
+  \column{0.6}% Width set relative to text width
+  
+    \usecolorstyle{redBlock}
+    \block{Large Column}{Text\\Text\\Text Text Text}
+    \usecolorstyle{blueBlock}
+
+    \block{Block titles with enough text will automatically obey spacing requirements }
+    {Text\\Text}
+
+    \block{Sample Block 4}{T\\E\\S\\T}
+
+  % SECOND column
+  \column{0.4}
+
+    \usecolorstyle{greenBlock}
+    \block[titleleft]{Smaller Column}{Test}
+    \usecolorstyle{blueBlock}
+
+    \block[titlewidthscale=0.6, bodywidthscale=0.8]
+    {Variable width title}{Block with smaller width.}
+
+    \block{}{Block with no title}
+
+    \begin{subcolumns}
+      \subcolumn{0.27} \block{1}{First block.} \block{2}{Second block}
+      \subcolumn{0.4} \block{Sub-columns}{Sample subblocks\\Second subcolumn}
+      \subcolumn{0.33} \block{4}{Fourth} \block{}{Final Subcolumn block}
+    \end{subcolumns}
+\end{columns}
+
+\block[titleright]{Block outside of Columns}{Along with several options enabled}
+
+\end{document}

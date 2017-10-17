@@ -1,0 +1,132 @@
+\usepackage[utf8]{inputenc}   % El texto de entrada es utf8
+\usepackage[T1]{fontenc}      % Codificación de las fonts
+\usepackage[spanish]{babel}   % Selección de español
+%\usepackage{times}
+\usepackage{helvet}
+
+\usepackage{tikz, tikz-timing, colortbl}
+
+\renewcommand{\familydefault}{\sfdefault}
+\definecolor{darkBlue}{RGB}{0,0,100}
+
+\mode<presentation>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Seteo margenes izquierdo y derecho
+\setbeamersize{text margin left=10pt,text margin right=10pt}
+
+% Saco barra de navegación de la presentación
+\usenavigationsymbolstemplate{}
+
+% Pongo background de INTI
+\usebackgroundtemplate{
+  \includegraphics[page=2,width=\paperwidth,height=\paperheight]{background.pdf}
+}
+
+\defbeamertemplate*{title page}{customized}[1][] {
+  \vspace{40mm}
+  \hspace{21mm}
+  \begin{minipage}{71mm}
+    \centering{
+      \usebeamerfont{institute}\small{\insertinstitute}\par
+      \bigskip
+      \usebeamerfont{title}\inserttitle
+    }
+    \begin{flushright}
+      \usebeamerfont{author}\tiny{\insertauthor}\par
+      \bigskip
+      \usebeamerfont{date}\insertdate\par
+    \end{flushright}
+  \end{minipage}
+}
+
+% Cambio formato de títulos de frames
+\setbeamertemplate{frametitle}{
+  \vspace{15mm}
+  \color{darkBlue}
+  \textbf{\insertframetitle}
+  \par
+}
+
+%\usecolortheme{orchid}
+%\useinnertheme{rounded}
+
+\newcommand{\firstpage}{
+  {
+   \usebackgroundtemplate{\includegraphics[page=1,width=\paperwidth,height=\paperheight]{background.pdf}}
+   \begin{frame}
+     \titlepage
+   \end{frame}
+  }
+}
+
+\newcommand{\lastpage}[6]{
+  {
+   \usebackgroundtemplate{\includegraphics[page=3,width=\paperwidth,height=\paperheight]{background.pdf}}
+   \begin{frame}
+     \vspace{20mm}
+     \hspace{5mm}
+     %\color{white}
+     \begin{minipage}{48mm}
+       \usebeamerfont{title}#1\par
+       \bigskip
+       \usebeamerfont{institute}
+       #2 \\
+       #3 \\
+       #4 \\
+       #5 \\
+       #6 \\
+     \end{minipage}
+     \par
+   \end{frame}
+  }
+}
+
+\newcommand{\sourceOfInfo}[2] {
+ \begin{flushright}
+  \tiny
+   Fuente: #1 \\
+   \url{#2}
+ \end{flushright}
+}
+
+\usepackage{listings}
+\lstset{
+  backgroundcolor=\color{white},
+  basicstyle=\tiny,
+  commentstyle=\color{darkgray},
+  frame=single,
+  keywordstyle=\color{blue},
+  numbers=left,
+  numbersep=5pt,
+  numberstyle=\tiny\color{teal},
+  breaklines=true,
+  showstringspaces=false,
+  xleftmargin=0.2cm,
+  xrightmargin=0.2cm,
+  frameround=tttt
+}
+
+\newcommand{\shellcmd}[1]{\indent\indent\texttt{\footnotesize #1}}
+
+\definecolor{inti_blue}{RGB}{7,37,89}
+\setbeamercolor{title_color}{bg=inti_blue,fg=white}
+\newcommand{\titleOfSection}[1] {
+ \begin{beamercolorbox}[center,rounded=true,shadow=true]{title_color}
+ \huge #1
+ \end{beamercolorbox}
+}
+
+\setbeamercolor{console_color}{fg=white,bg=black}
+\newcommand{\console}[1] {
+ \footnotesize
+ \begin{beamercolorbox}[sep=0.4em,wd=0.99\textwidth]{console_color}
+ {\ttfamily #1}
+ \end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mode
+<all>
