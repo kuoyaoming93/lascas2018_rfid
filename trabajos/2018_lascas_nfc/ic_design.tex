@@ -11,7 +11,7 @@ The previous section demonstrates the RF modules that involve  the communication
 
 The Power Supply Generator splits into two parts: signal rectification and power limitation.
 
-The first part rectifies the RF field signal to get power supply for the chip, a full NMOS bridge rectifier was implemented in this design. And the second part consists of a Shunt resistor. The Shunt resistor is capable to limit the voltage of the antenna and protects the whole chip. ISO/IEC14443-2 requires the PICC to work when magnetic intensity between 1.5-7.5A/m rms. Therefore the PICC must work in these extreme conditions.  
+The first part rectifies the RF field signal to get power supply for the chip, a full NMOS bridge rectifier \cite{rfid_rect1}\cite{rfid_rect2} was implemented in this design. And the second part consists of a Shunt resistor. The Shunt resistor is capable to limit the voltage of the antenna and protects the whole chip. ISO/IEC14443-2 requires the PICC to work when magnetic intensity between 1.5-7.5A/m rms. Therefore the PICC must work in these extreme conditions.  
 
 The simplified schematic of signal rectification is shown in Fig. \ref{fig:rect} and power limitation (Shunt resistor) is shown in Fig. \ref{fig:shunt}.
 
@@ -54,7 +54,7 @@ A frequency divider by 4 is placed at the output of the clock generator, reducin
 
 \subsection{Voltage Regulator (VR)}
 
-The Voltage Regulator regulates the voltage supplied from PSG and provide a constant DC voltage at the output of this module. The VR is known as the series pass regulator, as shown in Fig. \ref{fig:ldo}. It consists of 3 major parts. Operational amplifier (OP-AMP) is used as error amplifier. A series pass transistor forms a current amplifier. R1 and R2 are used as resistive voltage divider (Ecuation \ref{eq:vref}). The reference source Vref, in this case, is a beta multiplier. 
+The Voltage Regulator \cite{rfid_ldo} regulates the voltage supplied from PSG and provide a constant DC voltage at the output of this module. The VR is known as the series pass regulator, as shown in Fig. \ref{fig:ldo}. It consists of 3 major parts. Operational amplifier (OP-AMP) is used as error amplifier. A series pass transistor forms a current amplifier. R1 and R2 are used as resistive voltage divider (Ecuation \ref{eq:vref}). The reference source Vref, in this case, is a beta multiplier \cite{panadero}. 
 
 \begin{equation} \label{eq:vref}
 VDD = Vref*(1+R1/R2)
@@ -72,7 +72,7 @@ VDD = Vref*(1+R1/R2)
 
 \subsection{Modulator}
 
-The modulator transmits the signal from PICC to PCD. There are two different types of load modulation: resistive and capacitive modulation. Both types create a subcarrier next to 13.56MHz. The NMOS are switched on and off in time with the encoded data. This will vary the load (resistive) or resonance frequency  (capacitive) of the transponder.  Resistive modulation was adopted in this design for its simplicity. The schematic is shown in Fig. \ref{fig:mod}.
+The modulator \cite{rfid_modulador} transmits the signal from PICC to PCD. There are two different types of load modulation: resistive and capacitive modulation. Both types create a subcarrier next to 13.56MHz. The NMOS are switched on and off in time with the encoded data. This will vary the load (resistive) or resonance frequency  (capacitive) of the transponder.  Resistive modulation was adopted in this design for its simplicity. The schematic is shown in Fig. \ref{fig:mod}.
 
 \begin{figure}[h]
   \centering
@@ -83,7 +83,7 @@ The modulator transmits the signal from PICC to PCD. There are two different typ
 
 \subsection{Demodulator}
 
-The demodulator recovers the digital signals from the ASK signal transmitted from PCD. An Envelope Extractor (EE) is needed to extract the data. The digital signal is recovered by connecting the output of the EE with the input of the buffer. The circuit is shown in Fig. \ref{fig:demod}. 
+The demodulator recovers the digital signals from the ASK signal transmitted from PCD. An Envelope Extractor (EE) \cite{rfid_demodulador} is needed to extract the data. The digital signal is recovered by connecting the output of the EE with the input of the buffer. The circuit is shown in Fig. \ref{fig:demod}. 
 
 \begin{figure}[h]
   \centering
