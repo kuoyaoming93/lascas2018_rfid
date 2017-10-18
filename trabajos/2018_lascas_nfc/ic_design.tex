@@ -1,9 +1,9 @@
-The previous section demonstrates the RF modules that involve  the communication between PCD and PICC. This section will describe in detail each module of the Analog Front End for ISO/IEC 14443A (see Fig. \ref{fig:afe}).
+The previous section demonstrates the RF modules that involve  the communication between PCD and PICC. This section will describe in detail each module of the analog front-end for ISO/IEC 14443A (see Fig. \ref{fig:afe}).
 
 \begin{figure}[]
   \centering
   \includegraphics[page=10,width=80mm]{images-crop.pdf}
-  \caption{PICC Analog Front End}
+  \caption{PICC Analog Front-end}
   \label{fig:afe}
 \end{figure}
 
@@ -83,7 +83,7 @@ The modulator transmits the signal from PICC to PCD. There are two different typ
 
 \subsection{Demodulator}
 
-The demodulator recovers the digital signals from the ASK signal transmitted from PCD. An Envelope Extractor (EE) is needed to extract the data. The digital signal is recovered by connecting the output of the EE with the input of the buffer.  The circuit is shown in Fig. \ref{fig:demod}. 
+The demodulator recovers the digital signals from the ASK signal transmitted from PCD. An Envelope Extractor (EE) is needed to extract the data. The digital signal is recovered by connecting the output of the EE with the input of the buffer. The circuit is shown in Fig. \ref{fig:demod}. 
 
 \begin{figure}[h]
   \centering
@@ -94,7 +94,7 @@ The demodulator recovers the digital signals from the ASK signal transmitted fro
 
 \subsection{Power On Reset (POR)}
 
-The Power On Reset module is used to reset the digital machine and put it into idle state. It consists of a RC low pass network. The schematic is demonstrated in Fig. \ref{fig:por}. 
+The Power On Reset module is used to reset the digital machine and put it into idle state. It consists of a RC low pass network. When the chip enter to the RF field, the VR turns on and power all the modules. The POR module holds the voltage of the VR and delays it. This signal applies to the reset pin of the Flip-Flops in the digital machine. The schematic is demonstrated in Fig. \ref{fig:por}. 
 
 \begin{figure}[h]
   \centering
