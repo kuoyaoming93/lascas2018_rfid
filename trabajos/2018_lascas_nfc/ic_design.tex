@@ -35,7 +35,7 @@ The Clock Generator recovers the clock from the antenna and is used by the DPU. 
 
 The difference of phase between RF+ and RF- are 180 degrees, it is easy to take advantage of this property to recompose the clock. The simplified schematic is shown in Fig. \ref{fig:clk} and the simulation in the Fig. \ref{fig:clk_sim}.
 
-A frequency divider by 4 is placed at the output of the clock generator, reducing the work frequency also reduces the power consumed. On the other hand, Carrier-Frequency/4 (3.39MHz) is used for the DPU, because the FDT (Frame Delay Time)  defined in ISO/IEC14443-3 is for all commands are divisor of this frequency.
+A frequency divider by 4 is placed at the output of the clock generator, reducing the work frequency also reduces the power consumed. On the other hand, Carrier-Frequency/4 (3.39MHz) is used for the DPU, because the FDT (Frame Delay Time)  defined in ISO/IEC14443-3 for all commands are divisor of this frequency.
  
 
 \begin{figure}[]
