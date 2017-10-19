@@ -1,4 +1,4 @@
-The previous section demonstrates the RF modules that involve  the communication between PCD and PICC. This section will describe in detail each module of the analog front-end for ISO/IEC 14443A (see Fig. \ref{fig:afe}).
+The previous section introduced the RF modules involved in the communication between the PCD and the PICC. This section will describe in detail each module of the analog front-end for ISO/IEC 14443A (see Fig. \ref{fig:afe}).
 
 \begin{figure}[]
   \centering
@@ -9,9 +9,9 @@ The previous section demonstrates the RF modules that involve  the communication
 
 \subsection{Power Supply Generator (PSG)}
 
-The Power Supply Generator splits into two parts: signal rectification and power limitation.
+The Power Supply Generator is divided into two parts: signal rectification and power limitation.
 
-The first part rectifies the RF field signal to get power supply for the chip, a full NMOS bridge rectifier \cite{rfid_rect1}\cite{rfid_rect2} was implemented in this design. And the second part consists of a Shunt resistor. The Shunt resistor is capable to limit the voltage of the antenna and protects the whole chip. ISO/IEC14443-2 requires the PICC to work when magnetic intensity between 1.5-7.5A/m rms. Therefore the PICC must work in these extreme conditions.  
+The first part rectifies the RF field signal and powers the chip. A full NMOS bridge rectifier \cite{rfid_rect1}\cite{rfid_rect2} was implemented in this design. The second part is a Shunt resistor that limits the voltage of the antenna and protects the whole chip. ISO/IEC14443-2 requires the PICC to work when magnetic intensity is between 1.5-7.5A/m rms. Therefore the PICC must be able to work under these extreme conditions.  
 
 The simplified schematic of signal rectification is shown in Fig. \ref{fig:rect} and power limitation (Shunt resistor) is shown in Fig. \ref{fig:shunt}.
 
@@ -31,11 +31,11 @@ The simplified schematic of signal rectification is shown in Fig. \ref{fig:rect}
 
 \subsection{Clock Generator (CG)}
 
-The Clock Generator recovers the clock from the antenna and is used by the DPU. This module generates a clock source of 13.56 MHz. Basically it consists of two FF/D (clock divider by 2) and a XOR logic gate. 
+The Clock Generator gets the clock from the antenna and it is used by the DPU. This module generates a 13.56MHz clock source. It consists of two FF/D (clock divider by 2) and an XOR logic gate. 
 
-The difference of phase between RF+ and RF- are 180 degrees, it is easy to take advantage of this property to recompose the clock. The simplified schematic is shown in Fig. \ref{fig:clk} and the simulation in the Fig. \ref{fig:clk_sim}.
+The phase difference between RF+ and RF- is 180 degrees, making it quite easy to recover the clock. The simplified schematic is shown in Fig. \ref{fig:clk} and the simulation in the Fig. \ref{fig:clk_sim}.
 
-A frequency divider by 4 is placed at the output of the clock generator, reducing the work frequency also reduces the power consumed. On the other hand, Carrier-Frequency/4 (3.39MHz) is used for the DPU, because the FDT (Frame Delay Time)  defined in ISO/IEC14443-3 for all commands are divisor of this frequency.
+A frequency divider by 4 is placed at the output of the clock generator. Reducing the work frequency also reduces the power consumed. On the other hand, a Carrier-Frequency/4 (3.39MHz) is used for the DPU, because the FDT (Frame Delay Time) defined in ISO/IEC14443-3 for all commands is divisor of this frequency.
  
 
 \begin{figure}[]
@@ -54,7 +54,7 @@ A frequency divider by 4 is placed at the output of the clock generator, reducin
 
 \subsection{Voltage Regulator (VR)}
 
-The Voltage Regulator \cite{rfid_ldo} regulates the voltage supplied from PSG and provides a constant DC voltage at the output of this module. The VR is known as the series pass regulator, as shown in Fig. \ref{fig:ldo}. It consists of 3 major parts. Operational amplifier (OP-AMP) is used as error amplifier. A series pass transistor forms a current amplifier. R1 and R2 are used as resistive voltage divider (Ecuation \ref{eq:vref}). The reference source Vref, in this case, is a beta multiplier \cite{panadero}. 
+The Voltage Regulator \cite{rfid_ldo} regulates the voltage supplied from PSG and provides a constant DC voltage at the output of this module. The VR is known as the series pass regulator, as shown in Fig. \ref{fig:ldo}. It consists of three major parts. An operational amplifier (OP-AMP) is used as error amplifier. A series pass transistor is used as a current amplifier. R1 and R2 are used as a resistive voltage divider (Equation \ref{eq:vref}). The reference voltage source Vref, in this case, is a beta multiplier \cite{panadero}. 
 
 \begin{equation} \label{eq:vref}
 VDD = Vref*(1+R1/R2)
@@ -72,7 +72,7 @@ VDD = Vref*(1+R1/R2)
 
 \subsection{Modulator}
 
-The modulator \cite{rfid_modulador} transmits the signal from PICC to PCD. There are two different types of load modulation: resistive and capacitive modulation. Both types create a subcarrier next to 13.56MHz. The NMOS are switched on and off in time with the encoded data. This will vary the load (resistive) or resonance frequency  (capacitive) of the transponder.  Resistive modulation was adopted in this design for its simplicity. The schematic is shown in Fig. \ref{fig:mod}.
+The modulator \cite{rfid_modulador} carries the signal from the PICC to the PCD module. There are two different types of load modulation: resistive and capacitive modulation. Both types create a subcarrier next to 13.56MHz. The NMOS transistors are switched on and off in time with the encoded data. This varies the load (resistive) or resonance frequency  (capacitive) of the transponder.  Resistive modulation was adopted in this design for its simplicity. The schematic is shown in Fig. \ref{fig:mod}.
 
 \begin{figure}[h]
   \centering
@@ -83,7 +83,7 @@ The modulator \cite{rfid_modulador} transmits the signal from PICC to PCD. There
 
 \subsection{Demodulator}
 
-The demodulator recovers the digital transmitted from PCD. An Envelope Extractor (EE) \cite{rfid_demodulador} is needed to extract the data. The digital signal is recovered by connecting the output of the EE with the input of the buffer. The circuit is shown in Fig. \ref{fig:demod}. 
+The demodulator recovers the digital frame transmitted from the PCD module. An Envelope Extractor (EE) circuit \cite{rfid_demodulador} is needed to extract the data. The digital signal is recovered by connecting the output of the EE with the input of the buffer. The circuit is shown in Fig. \ref{fig:demod}. 
 
 \begin{figure}[h]
   \centering
@@ -94,7 +94,7 @@ The demodulator recovers the digital transmitted from PCD. An Envelope Extractor
 
 \subsection{Power On Reset (POR)}
 
-The Power On Reset module is used to reset the digital machine and put it into idle state. It consists of a RC low pass network. When the chip enter to the RF field, the VR turns on and power all the modules. The POR module holds the voltage of the VR and delays it. This signal applies to the reset pin of the Flip-Flops in the digital machine. The schematic is demonstrated in Fig. \ref{fig:por}. 
+The Power On Reset module is used to reset the digital machine and put it into an idle state. It consists of a RC low pass network. When the chip enters the RF field, the VR turns on and powers all modules. The POR module holds the voltage of the VR and delays it. This signal is applied to the reset pin of the Flip-Flops in the digital machine. The schematic is shown in Fig. \ref{fig:por}. 
 
 \begin{figure}[h]
   \centering
