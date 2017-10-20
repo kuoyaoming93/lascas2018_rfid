@@ -31,11 +31,11 @@ The simplified schematic of signal rectification is shown in Fig. \ref{fig:rect}
 
 \subsection{Clock Generator (CG)}
 
-The Clock Generator gets the clock from the antenna and it is used by the DPU. This module generates a 13.56MHz clock source. It consists of two FF/D (clock divider by 2) and an XOR logic gate. 
+The Clock Generator gets the clock from the antenna and it is then used by the DPU. This module generates a 13.56MHz clock source. It consists of two D-Tyoe Flip-Flops (Divide-by-2 clock signal) and an XOR logic gate. 
 
-The phase difference between RF+ and RF- is 180 degrees, making it quite easy to recover the clock. The simplified schematic is shown in Fig. \ref{fig:clk} and the simulation in the Fig. \ref{fig:clk_sim}.
+The phase difference between RF+ and RF- is 180 degrees, making it quite easy to recover the clock. The simplified schematic is shown in Fig. \ref{fig:clk} and the simulation in Fig. \ref{fig:clk_sim}.
 
-A frequency divider by 4 is placed at the output of the clock generator. Reducing the work frequency also reduces the power consumed. On the other hand, a Carrier-Frequency/4 (3.39MHz) is used for the DPU, because the FDT (Frame Delay Time) defined in ISO/IEC14443-3 for all commands is divisor of this frequency.
+A frequency divider by 4 is placed at the output of the clock generator. Reducing the work frequency also reduces the power consumed. On the other hand, a Carrier-Frequency/4 (3.39MHz) is used for the DPU, because the FDT (Frame Delay Time) defined in ISO/IEC14443-3 for all commands is a divisor of this frequency.
  
 
 \begin{figure}[]
