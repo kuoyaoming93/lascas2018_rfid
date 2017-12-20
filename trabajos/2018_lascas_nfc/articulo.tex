@@ -19,6 +19,17 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\def\ps@IEEEtitlepagestyle{%
+  \def\@oddfoot{\mycopyrightnotice}%
+  \def\@evenfoot{}%
+}
+\def\mycopyrightnotice{%
+  {\footnotesize 978-1-5386-2311-4/18/\$31.00 \copyright2018 IEEE\hfill}% <--- Change here
+  \gdef\mycopyrightnotice{}% just in case
+}
+
 \title{Analog Front-End Design of Contactless RFID Smart Card ISO/IEC14443A Standard - Compliant}
 
 \author{
