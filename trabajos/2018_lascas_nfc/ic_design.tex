@@ -13,7 +13,7 @@ The Power Supply Generator is divided into two parts: signal rectification and p
 
 The first part rectifies the RF field signal and powers the chip. A full NMOS bridge rectifier \cite{rfid_rect1}\cite{rfid_rect2} was implemented in this design. The second part is a Shunt resistor that limits the voltage of the antenna and protects the whole chip. ISO/IEC14443-2 requires the PICC to work when magnetic intensity is between 1.5-7.5A/m rms. Therefore the PICC must be able to work under these extreme conditions.  
 
-The simplified schematic of signal rectification is shown in Fig. \ref{fig:rect} and power limitation (Shunt resistor) is shown in Fig. \ref{fig:shunt}.
+The simplified schematic of signal rectification is shown in Fig. \ref{fig:rect} and power limitation (Shunt resistor) is shown in Fig. \ref{fig:shunt}. The Shunt Resistor switches on at 2.6V using the components in tables \ref{trans_specs} and \ref{res_specs} and the simulation is shown in Fig. \ref{fig:shunt_sim}.
 
 \begin{figure}[h]
   \centering
@@ -24,11 +24,17 @@ The simplified schematic of signal rectification is shown in Fig. \ref{fig:rect}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[page=12,width=60mm]{images-crop.pdf}
+  \includegraphics[page=12,width=50mm]{images-crop.pdf}
   \caption{Shunt Resistor}
   \label{fig:shunt}
 \end{figure}
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[page=22,width=90mm]{images-crop.pdf}
+  \caption{Shunt Resistor simulation}
+  \label{fig:shunt_sim}
+\end{figure}
 
 \subsection{Clock Generator (CG)}
 
@@ -56,7 +62,7 @@ A frequency divider by 4 is placed at the output of the clock generator. Reducin
 
 \subsection{Voltage Regulator (VR)}
 
-The Voltage Regulator \cite{rfid_ldo} regulates the voltage supplied from PSG and provides a constant DC voltage at the output of this module. The VR is known as the series pass regulator, as shown in Fig. \ref{fig:ldo}. It consists of three major parts. An operational amplifier (OP-AMP) is used as error amplifier. A series pass transistor is used as a current amplifier. R3 and R4 are used as a resistive voltage divider (Equation \ref{eq:vref}). The reference voltage source Vref, in this case, is a beta multiplier \cite{panadero}. 
+The Voltage Regulator \cite{rfid_ldo} regulates the voltage supplied from PSG and provides a constant DC voltage at the output of this module. The VR is known as the series pass regulator, as shown in Fig. \ref{fig:ldo}. It consists of three major parts. An operational amplifier (OP-AMP) is used as error amplifier. A series pass transistor is used as a current amplifier. R3 and R4 are used as a resistive voltage divider (Equation \ref{eq:vref}). The reference voltage source Vref, in this case, is a beta multiplier \cite{panadero}. The power consumption of the VR is 3.5uA in simulation. 
 
 \begin{equation} \label{eq:vref}
 VDD = Vref*(1+R3/R4)
