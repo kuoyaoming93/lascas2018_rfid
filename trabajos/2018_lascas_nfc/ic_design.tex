@@ -1,8 +1,8 @@
-The previous section introduced the RF modules involved in the communication between the PCD and the PICC. This section will describe in detail each module of the analog front-end for ISO/IEC 14443A (see Fig. \ref{fig:afe}).
+The previous section introduced the RF modules involved in the communication between the PCD and the PICC. This section will describe in detail each module of the analog front-end for ISO/IEC 14443A (see Fig. \ref{fig:afe}) and values of the components are shown in tables \ref{trans_specs} and \ref{res_specs}.
 
 \begin{figure}[]
   \centering
-  \includegraphics[page=10,width=80mm]{images-crop.pdf}
+  \includegraphics[page=10,width=90mm]{images-crop.pdf}
   \caption{PICC Analog Front-end}
   \label{fig:afe}
 \end{figure}
@@ -17,7 +17,7 @@ The simplified schematic of signal rectification is shown in Fig. \ref{fig:rect}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[page=11,width=60mm]{images-crop.pdf}
+  \includegraphics[page=11,width=50mm]{images-crop.pdf}
   \caption{NMOS Bridge Rectifier}
   \label{fig:rect}
 \end{figure}
@@ -28,6 +28,7 @@ The simplified schematic of signal rectification is shown in Fig. \ref{fig:rect}
   \caption{Shunt Resistor}
   \label{fig:shunt}
 \end{figure}
+
 
 \subsection{Clock Generator (CG)}
 
@@ -40,12 +41,12 @@ A frequency divider by 4 is placed at the output of the clock generator. Reducin
 
 \begin{figure}[]
   \centering
-  \includegraphics[page=13,width=60mm]{images-crop.pdf}
+  \includegraphics[page=13,width=90mm]{images-crop.pdf}
   \caption{Clock Generator schematic}
   \label{fig:clk}
 \end{figure}
 
-\begin{figure}[]
+\begin{figure}[h]
   \centering
   \includegraphics[page=21,width=90mm]{images-crop.pdf}
   \caption{Clock recovery simulation}
@@ -55,10 +56,10 @@ A frequency divider by 4 is placed at the output of the clock generator. Reducin
 
 \subsection{Voltage Regulator (VR)}
 
-The Voltage Regulator \cite{rfid_ldo} regulates the voltage supplied from PSG and provides a constant DC voltage at the output of this module. The VR is known as the series pass regulator, as shown in Fig. \ref{fig:ldo}. It consists of three major parts. An operational amplifier (OP-AMP) is used as error amplifier. A series pass transistor is used as a current amplifier. R1 and R2 are used as a resistive voltage divider (Equation \ref{eq:vref}). The reference voltage source Vref, in this case, is a beta multiplier \cite{panadero}. 
+The Voltage Regulator \cite{rfid_ldo} regulates the voltage supplied from PSG and provides a constant DC voltage at the output of this module. The VR is known as the series pass regulator, as shown in Fig. \ref{fig:ldo}. It consists of three major parts. An operational amplifier (OP-AMP) is used as error amplifier. A series pass transistor is used as a current amplifier. R3 and R4 are used as a resistive voltage divider (Equation \ref{eq:vref}). The reference voltage source Vref, in this case, is a beta multiplier \cite{panadero}. 
 
 \begin{equation} \label{eq:vref}
-VDD = Vref*(1+R1/R2)
+VDD = Vref*(1+R3/R4)
 \end{equation}
 %$$VDD = Vref*(1+R1/R2)$$  
 
@@ -66,7 +67,7 @@ VDD = Vref*(1+R1/R2)
 
 \begin{figure}[]
   \centering
-  \includegraphics[page=15,width=60mm]{images-crop.pdf}
+  \includegraphics[page=15,width=70mm]{images-crop.pdf}
   \caption{Voltage Regulator schematic}
   \label{fig:ldo}
 \end{figure}
@@ -88,8 +89,8 @@ The demodulator recovers the digital frame transmitted from the PCD module. An E
 
 \begin{figure}[h]
   \centering
-  \includegraphics[page=17,width=80mm]{images-crop.pdf}
-  \caption{Demdulator schematic}
+  \includegraphics[page=17,width=70mm]{images-crop.pdf}
+  \caption{Demodulator schematic}
   \label{fig:demod}
 \end{figure}
 
@@ -99,7 +100,47 @@ The Power On Reset module is used to reset the digital machine and put it into a
 
 \begin{figure}[h]
   \centering
-  \includegraphics[page=18,width=20mm]{images-crop.pdf}
+  \includegraphics[page=18,width=30mm]{images-crop.pdf}
   \caption{POR schematic}
   \label{fig:por}
 \end{figure}
+
+
+\begin{table}[h]
+\centering
+\caption{Transistors}
+\label{trans_specs}
+\begin{tabular}{c|c|c|c|c}
+\textbf{Transistor}  & \textbf{Symbol}& \textbf{W}  & \textbf{L}  & \textbf{Fingers/Multiplicity}  \\ \hline
+NMOS                 & Q1,Q2,Q3,Q4    & 10 um       & 0.4 um      & 20                \\
+PMOS                 & Q5,Q6,Q7       & 5 um        & 0.4 um      & 1                 \\
+NMOS                 & Q8             & 5 um        & 0.4 um      & 2                 \\
+PMOS                 & Q9             & 15 um       & 0.4 um      & 25                \\
+PMOS                 & Q10,Q11        & 1 um        & 3 um        & 2                 \\
+NMOS                 & Q12,Q13        & 2 um        & 1 um        & 2                 \\
+NMOS                 & Q14            & 0.5 um      & 3 um        & 1                 \\
+PMOS                 & Q15            & 10 um       & 0.4 um      & 10                \\
+NMOS                 & Q16,Q17        & 5 um        & 0.4 um      & 1                 \\
+NMOS                 & Q18,Q19        & 3 um        & 0.4 um      & 10                \\
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Additional Components}
+\label{res_specs}
+\begin{tabular}{c|c}
+\textbf{Symbol} & \textbf{Value} \\ \hline
+R1              & 10 k           \\
+R2              & 48.5 k         \\
+R3,R4           & 343 k          \\
+R5,R6           & 37.5 k         \\
+R7,R8           & 370            \\
+R9              & 150 k           \\
+C1              & 5p             \\
+C2              & 3.5 p          \\
+C3              & 7.8 p          \\
+
+
+\end{tabular}
+\end{table}
