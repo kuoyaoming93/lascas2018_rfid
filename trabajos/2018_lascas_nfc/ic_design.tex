@@ -11,7 +11,7 @@ The previous section introduced the RF modules involved in the communication bet
 
 The Power Supply Generator is divided into two parts: signal rectification and power limitation.
 
-The first part rectifies the RF field signal and powers the chip. A full NMOS bridge rectifier \cite{rfid_rect1}\cite{rfid_rect2} was implemented in this design. The second part is a Shunt resistor that limits the voltage of the antenna and protects the whole chip. ISO/IEC14443-2 requires the PICC to work when magnetic intensity is between 1.5-7.5A/m rms. Therefore the PICC must be able to work under these extreme conditions.  
+The first part rectifies the RF field signal and powers the chip. A full NMOS bridge rectifier \cite{rfid_rect}\cite{rfid_rect1}\cite{rfid_rect2} was implemented in this design. The second part is a Shunt resistor that limits the voltage of the antenna and protects the whole chip. ISO/IEC14443-2 requires the PICC to work when magnetic intensity is between 1.5-7.5A/m rms. Therefore the PICC must be able to work under these extreme conditions.  
 
 The simplified schematic of signal rectification is shown in Fig. \ref{fig:rect} and power limitation (Shunt resistor) is shown in Fig. \ref{fig:shunt}. The Shunt Resistor switches on at 2.6V using the components in tables \ref{trans_specs} and \ref{res_specs} and the simulation is shown in Fig. \ref{fig:shunt_sim}.
 
@@ -47,7 +47,7 @@ A frequency divider by 4 is placed at the output of the clock generator. Reducin
 
 \begin{figure}[]
   \centering
-  \includegraphics[page=13,width=90mm]{images-crop.pdf}
+  \includegraphics[page=13,width=60mm]{images-crop.pdf}
   \caption{Clock Generator schematic}
   \label{fig:clk}
 \end{figure}

@@ -3,7 +3,7 @@ ISO/IEC 14443-2 describes two types of RF interface of contactless IC cards whic
 
 In Type A, the signal from the PCD (Proximity Coupling Device) to the PICC (Proximity Integrated Circuit Card) is modulated in ASK (Amplitude Shift Keying) with a modulation index of 100\%. When receiving data from PCD, the PICC can not process the data because it lacks a clock source. 
 
-In Type B,  the signal from PICC to PCD is defined to be modulated with BPSK by carrier, and the signal from PCD to PICC is modulated in ASK with a modulation index of 10\%, making it possible for the PICC to work continuously. Therefore, even though Type B implementation would be able to reach a higher data rate, its circuit design would be more complicated. The 10\% ASK index is harder to detect than a 100\% index.
+In Type B \cite{rfid_transponder},  the signal from PICC to PCD is defined to be modulated with BPSK by carrier, and the signal from PCD to PICC is modulated in ASK with a modulation index of 10\%, making it possible for the PICC to work continuously. Therefore, even though Type B implementation would be able to reach a higher data rate, its circuit design would be more complicated. The 10\% ASK index is harder to detect than a 100\% index.
 
 This paper describes the circuit design for the Type A. 
 
