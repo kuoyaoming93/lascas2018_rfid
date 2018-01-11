@@ -17,7 +17,7 @@ The simplified schematic of signal rectification is shown in Fig. \ref{fig:rect}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[page=11,width=50mm]{images-crop.pdf}
+  \includegraphics[page=11,width=40mm]{images-crop.pdf}
   \caption{NMOS Bridge Rectifier}
   \label{fig:rect}
 \end{figure}
@@ -62,7 +62,7 @@ A frequency divider by 4 is placed at the output of the clock generator. Reducin
 
 \subsection{Voltage Regulator (VR)}
 
-The Voltage Regulator \cite{rfid_ldo} regulates the voltage supplied from PSG and provides a constant DC voltage at the output of this module. The VR is known as the series pass regulator, as shown in Fig. \ref{fig:ldo}. It consists of three major parts. An operational amplifier (OP-AMP) is used as error amplifier. A series pass transistor is used as a current amplifier. R3 and R4 are used as a resistive voltage divider (Equation \ref{eq:vref}). The reference voltage source Vref, in this case, is a beta multiplier \cite{panadero}. The power consumption of the VR is 3.5uA in simulation. 
+The Voltage Regulator \cite{rfid_ldo} regulates the voltage supplied from PSG and provides a constant DC voltage at the output of this module. The VR is known as the series pass regulator, as shown in Fig. \ref{fig:ldo}. It consists of three major parts. An operational amplifier (OP-AMP) is used as error amplifier. A series pass transistor is used as a current amplifier. R3 and R4 are used as a resistive voltage divider (Equation \ref{eq:vref}). The reference voltage source Vref, in this case, is a beta multiplier \cite{panadero}. The power consumption of the VR is 15uW in simulation. 
 
 \begin{equation} \label{eq:vref}
 VDD = Vref*(1+R3/R4)
